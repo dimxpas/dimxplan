@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="src/css/style.css">
+  <!-- <script type="text/javascript" src="src/js/global.js"></script> -->
+  <title>Planning Hebdomadaire</title>
+</head>
+<body>
+
+  <div class="container">
+    <div id="show_all_schedule" onclick="show_schedule()" title="Planning hebdomadaire">⌨︎</div>
+    <div id="all_schedule" class="hidden">
+      <h1>Planning Hebdomadaire<i class="bi bi-file-earmark-text"></i></h1>
+      <div class="schedule" id="schedule"></div>
+    </div>
+
+    <h1>Planning du jour <span id="show_chrono" onclick="show_chrono()">⏱︎</span></h1>
+    <div class="day_schedule" id="day_schedule">
+      <div id="chrono_container" class="hidden">
+        <h2 class="chronometre" id="chrono">00:00:00.00</h2>
+
+        <button onclick="toggleChrono()"><span id="start_chrono_btn">▶</span><span id="stop_chrono_btn" class="hidden">■</span></button>
+        <button onclick="resetChrono()">Réinitialiser</button>
+        <br><br>
+        <select id="minuteurSelect">
+          <option value="30">30 secondes</option>
+          <option value="60">60 secondes</option>
+        </select>
+        <button onclick="ajouterMinuteur()">Ajouter Minuteur</button>
+        <h3 class="minuteurs" id="minuteurs"></h3>
+      </div>
+    </div>
+
+  </div>
+
+  <audio id="bip" src="src/audio/bip.mp3" preload="auto"></audio>
+  <script type="text/javascript" src="src/js/global.js"></script>
+ 
+</body>
+</html>
