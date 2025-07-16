@@ -76,6 +76,7 @@ function random(value1, value2) {
 // Nb KCAL
 // console.log((10*85+6.25*182-5*29+5)*1.1);
 var video_activity = "";
+var title_vid = "";
 abs = true;
 day_container.innerHTML += `<h2>${jours[today]}</h2>`;
 planning[jours[today]].forEach(today_activity => {
@@ -86,15 +87,18 @@ planning[jours[today]].forEach(today_activity => {
             video_container = document.getElementById("item_video");
 
             if (today_activity.activity == "Full body" || today_activity.activity == "Cardio") {
-            video_activity = "10_min_full_body_cardio";
-            abs = false; // si full body ou cardio pas d'abdo mais posture
+                video_activity = "10_min_full_body_cardio";
+                title_vid = "10min Full Body Cardio";
+                abs = false; // si full body ou cardio pas d'abdo mais posture
             } else if (today_activity.activity == "Haut du corps") {
-            video_activity = "100_push_ups_a_day_challenge";
+                video_activity = "100_push_ups_a_day_challenge";
+                title_vid = "100 pompes challenge";
             } else if (today_activity.activity == "Bas du corps") {
-            video_activity = "7_min_legs";
+                video_activity = "7_min_legs";
+                title_vid = "7min jambes";
             }
 
-            video_container.innerHTML += `<div class="col-sm-12 col-lg-4">
+            video_container.innerHTML += `<div class="col-sm-12 col-lg-4"><h3>Échauffement</h3>
                 <video controls="controls" preload="true">
                     <source src="src/video/warm_up_routine.mp4" type="video/mov"/>
                     <source src="src/video/warm_up_routine.mp4" type="video/mp4" />
@@ -102,7 +106,7 @@ planning[jours[today]].forEach(today_activity => {
                     Your browser does not support the video tag.
                 </video>
             </div>`;
-            video_container.innerHTML += `<div class="col-sm-12 col-lg-4">
+            video_container.innerHTML += `<div class="col-sm-12 col-lg-4"><h3>${title_vid}</h3>
                 <video controls="controls" preload="true">
                     <source src="src/video/${video_activity}.mp4" type="video/mov"/>
                     <source src="src/video/${video_activity}.mp4" type="video/mp4" />
@@ -111,7 +115,7 @@ planning[jours[today]].forEach(today_activity => {
                 </video>
             </div>`;
             if (abs) {
-                video_container.innerHTML += `<div class="col-sm-12 col-lg-4">
+                video_container.innerHTML += `<div class="col-sm-12 col-lg-4"><h3>Abdos</h3>
                     <video controls="controls" preload="true">
                         <source src="src/video/${random("5_min_abs_no_rest", "abs_challenge")}.mp4" type="video/mov"/>
                         <source src="src/video/${random("5_min_abs_no_rest", "abs_challenge")}.mp4" type="video/mp4" />
@@ -120,7 +124,7 @@ planning[jours[today]].forEach(today_activity => {
                     </video>
                 </div>`;
             } else {
-                video_container.innerHTML += `<div class="col-sm-12 col-lg-4">
+                video_container.innerHTML += `<div class="col-sm-12 col-lg-4"><h3>Stretching</h3>
                     <video controls="controls" preload="true">
                         <source src="src/video/8_min_to_fix_posture.mp4" type="video/mov"/>
                         <source src="src/video/8_min_to_fix_posture.mp4" type="video/mp4" />

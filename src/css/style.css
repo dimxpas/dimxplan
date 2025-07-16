@@ -134,6 +134,9 @@ h1 {
 h2 {
 	font-size: 2.5em;
 }
+h3 {
+	font-size: 1.5em;
+}
 
 .hidden {
 	display: none;
