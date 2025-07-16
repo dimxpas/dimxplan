@@ -1,3 +1,18 @@
+const bipSound = new Audio('./src/audio/bip.mp3');
+bipSound.muted = true;
+// gestion du volume
+function toggleVolume() {
+    document.getElementById("volume_up").classList.toggle("hidden");
+    document.getElementById("volume_mute").classList.toggle("hidden");
+    bipSound.muted = !bipSound.muted;
+    bipSound.currentTime = 0;
+    bipSound.play();
+    setTimeout(() => {
+        bipSound.pause();
+        bipSound.currentTime = 0;
+    }, 500);
+}
+
 const hebdo_schedule = document.getElementById("all_schedule");
 function show_schedule() {
     hebdo_schedule.classList.toggle("hidden");
@@ -206,7 +221,7 @@ function ajouterMinuteur() {
 
     if (timeLeft <= 3
     ) {
-        document.getElementById('bip').play();
+        bipSound.play();
     }
     if (timeLeft <= 0) {
         clearInterval(minuteurInterval);

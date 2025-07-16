@@ -142,9 +142,17 @@ h2 {
 	position: absolute;
     right: 25px;
     top: 15px;
-	font-size : 2.2em;
+	font-size : 3.5em;
 	cursor: pointer;
 	color: #31a1a5;
+    font-weight: 600;
+}
+#volume_btn {
+	position: absolute;
+    right: 100px;
+    top: 15px;
+	font-size : 3.5em;
+	cursor: pointer;
     font-weight: 600;
 }
 .schedule {
