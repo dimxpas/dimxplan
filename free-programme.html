@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
+    <title>Planning Hebdomadaire</title>
+</head>
+<body>
+
+    <div class="container">
+        <div id="show_all_schedule" onclick="show_schedule()" title="Planning hebdomadaire">⌨︎</div>
+        <div id="volume_btn" class="mr-3" onclick="toggleVolume()"><span id="volume_mute" title="Activer le son">♫✗</span><span id="volume_up" class="hidden" title="Couper le son">♫✓</span></div>
+        <h1>Planning du jour <span id="show_chrono" onclick="show_chrono()">⏱︎</span></h1>
+        <div class="day_schedule" id="day_schedule">
+            <div id="chrono_container" class="hidden">
+                <h2 class="chronometre" id="chrono">00:00:00.00</h2>
+
+                <button onclick="toggleChrono()"><span id="start_chrono_btn">▶</span><span id="stop_chrono_btn" class="hidden">■</span></button>
+                <button onclick="resetChrono()">Réinitialiser</button>
+                <br><br>
+                <select id="minuteurSelect">
+                <option value="30">30 secondes</option>
+                <option value="60">60 secondes</option>
+                </select>
+                <button onclick="ajouterMinuteur()">Ajouter Minuteur</button>
+                <h3 class="minuteurs" id="minuteurs"></h3>
+            </div>
+        </div>
+        <h2>Objectif 100 pompes</h2>
+        <div id="outdiv"><iframe src="https://www.100pompes.com/objectif-100-pompes/11-20-pompes" scrolling="no" id="iniframe"></iframe></div>
+        <h2>Objectifs 300 squats</h2>
+        <div id="outdiv_squat"><iframe src="https://www.musclesdesjambes.com/objectif-300-squats/21-40-squats" scrolling="no" id="iniframe_squat"></iframe></div>
+    </div>
+
+    <audio id="bip" src="src/audio/bip.mp3" preload="auto"></audio>
+    <script type="text/javascript" src="src/js/global.js"></script>
+    
+</body>
+</html>

@@ -236,3 +236,35 @@ h3 {
 	font-size: 1.5em;
 	color: #e10000;
 }
+
+#outdiv {
+height: 830px;
+overflow: hidden;
+position: relative;
+width: 900px;
+justify-self: center;
+}
+
+#iniframe {
+height: 1200px;
+left: -113px;
+position: absolute;
+top: -215px;
+width: 1050px;
+}
+
+#outdiv_squat {
+height: 1080px;
+overflow: hidden;
+position: relative;
+width: 900px;
+justify-self: center;
+}
+
+#iniframe_squat {
+height: 1215px;
+left: -113px;
+position: absolute;
+top: -225px;
+width: 1050px;
+}
