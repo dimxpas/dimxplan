@@ -334,7 +334,8 @@ h3 {
     margin-top: 10px;
     border-left: 5px solid #ffc107;
     border-radius: 4px;
-    font-weight: 500;
+	color: #c22222;
+    font-weight: 600;
 }
 
 /* Listing programmes  */

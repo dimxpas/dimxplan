@@ -291,7 +291,7 @@ pumps_plan["11-20"].forEach(pump_plan => {
     pumps_plan_container_html = "";
     pumps_plan_container_html += `<div class="day-serie-col col-sm-6""><div class="day-serie">
         <h3>Jour ${pump_plan.day}</h3>
-        <p class="center-align"><strong>Pause entre séries :</strong> ${pump_plan.pause} secondes</p>
+        <p class="center-align"><strong>Pause :</strong> ${pump_plan.pause} secondes</p>
         <hr>`;
 
         // Affichage des séries
@@ -340,7 +340,7 @@ function changeProgram(name_program) {
         }    
         pumps_plan_container_html += `<div class="day-serie">
             <h3>Jour ${pump_plan.day}</h3>
-            <p class="center-align"><strong>Pause entre séries :</strong> ${pump_plan.pause} secondes</p>
+            <p class="center-align"><strong>Pause :</strong> ${pump_plan.pause} secondes</p>
             <hr>`;
 
             // Affichage des séries
