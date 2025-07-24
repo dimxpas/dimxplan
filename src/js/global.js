@@ -284,7 +284,7 @@ const pumps_plan_container = document.getElementById("pumps_plan");
 const pumps_title_container = document.getElementById("title_pumps_program");
 
 // Liste de la série 11-20 pompes
-document.getElementById("title_pumps_program").innerHTML = "11-20";
+document.getElementById("title_pumps_program").innerHTML = "Série de 11-20 pompes";;
 pumps_plan_html = "";
 pumps_plan["11-20"].forEach(pump_plan => {
     nb_pump_series = 1;
@@ -322,7 +322,7 @@ pumps.forEach(pump => {
 });
 
 function changeProgram(name_program) {
-    document.getElementById("title_pumps_program").innerHTML = name_program;
+    document.getElementById("title_pumps_program").innerHTML = "Série de " + name_program + " pompes";
     pumps_plan_html = "";
     if (name_program == "31-35" || name_program == "36-40" || name_program == "41-45" || name_program == "46-50" || name_program == "51-55" || name_program == "56-60" || name_program == "+60") {
         complete_first_col = true;

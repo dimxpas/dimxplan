@@ -183,6 +183,7 @@ h3 {
 
 .center-align {
 	text-align: center;
+	text-align: -webkit-center;
 	justify-items: center;
 }
 
