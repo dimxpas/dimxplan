@@ -14,7 +14,7 @@
             <h1>Planning Hebdomadaire<i class="bi bi-file-earmark-text"></i></h1>
             <div class="schedule" id="schedule"></div>
         </div> -->
-        <h1>Planning du jour <span id="show_chrono" onclick="show_chrono()">⏱︎</span></h1>
+        <h1>Programme libre <span id="show_chrono" onclick="show_chrono()">⏱︎</span></h1>
         <div class="day_schedule" id="day_schedule">
             <div id="chrono_container" class="hidden">
                 <h2 class="chronometre" id="chrono">00:00:00.00</h2>
@@ -33,27 +33,18 @@
                 <h3 class="minuteurs" id="minuteurs"></h3>
             </div>
         </div>
-        <h2>Objectif 100 pompes</h2>
+        <h2 id="show_program"><button id="show_pump_program" onclick="showProgram('pump')"><span class="arrow-down-pump hidden">︾</span><span class="arrow-up-pump">︽</span> Objectif pompes <span class="arrow-up-pump">︽</span><span class="hidden arrow-down-pump">︾</span></button><button id="show_leg_program" onclick="showProgram('leg')"><span class="hidden arrow-down-leg">︾</span><span class="arrow-up-leg">︽</span> Objectif squats <span class="arrow-up-leg">︽</span><span class="hidden arrow-down-leg">︾</span></button></h2>
         <div class="row">
             <div class="col-sm-9">
-                <h3 id="title_pumps_program"></h3>
-                <div class="row" id="pumps_plan"></div>
+                <h2 id="title_program"></h2>
+                <h3 id="title_exercices_program"></h3>
+                <div class="row" id="exercices_plan"></div>
             </div>
-            <div class="col-sm-3" id="pumps_program">
-                <h3>Programmes</h3>
-                <ul id="list_pumps_program"></ul>
+            <div class="col-sm-3" id="exercices_program">
+                <h3 id="title_list"></h3>
+                <ul id="list_exercices_program"></ul>
             </div>
         </div>
-        <!-- <h2>Objectifs 300 squats</h2>
-        <div class="row">
-            <div class="col-sm-9" id="squats_plan">
-                <h3 id="title_squats_program"></h3>
-            </div>
-            <div class="col-sm-3" id="squats_program">
-                <h3>Programmes</h3>
-                <ul id="list_squats_program"></ul>
-            </div>
-        </div> -->
     </div>
 
     <audio id="bip" src="src/audio/bip.mp3" preload="auto"></audio>

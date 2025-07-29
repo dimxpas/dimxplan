@@ -280,7 +280,23 @@ h3 {
 }
 
 /* Séries du programme */
-#pumps_plan.row, #pumps_plan .row {
+#show_pump_program, #show_leg_program {
+    padding: 8px;
+    margin: 0px 23px;
+    background-color: #e8f5e9;
+    box-shadow: 2px 2px #b3b3b3;
+    border: 1px solid darkgrey;
+    border-radius: 5px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#show_pump_program:hover, #show_leg_program:hover {
+    background-color: #e8f5e9;
+	box-shadow: 3px 3px #b3b3b3;
+}
+
+#exercices_plan.row, #exercices_plan .row {
 	justify-content: center;
 }
 
@@ -339,13 +355,13 @@ h3 {
 }
 
 /* Listing programmes  */
-#list_pumps_program {
+#list_exercices_program {
     list-style: none;
     padding: 0;
 margin: 0;
 }
 
-#list_pumps_program li {
+#list_exercices_program li {
     background-color: #43719f;
     color: #ffffff;
     padding: 12px 16px;
@@ -357,7 +373,7 @@ margin: 0;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
 }
 
-#list_pumps_program li:hover {
+#list_exercices_program li:hover {
     background-color: #7596B8;
     transform: translateY(-2px);
 }
