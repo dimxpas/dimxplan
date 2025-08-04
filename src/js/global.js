@@ -381,60 +381,6 @@ function showProgram(program) {
     show_stretch = program === "stretch";
 }
 
-// function toggleArrows(activeType) {
-//     const types = ["pump", "leg", "abs", "cardio", "stretch"];
-
-//     types.forEach(type => {
-//         const upArrows = document.querySelectorAll(`.arrow-up-${type}`);
-//         const downArrows = document.querySelectorAll(`.arrow-down-${type}`);
-//         const isActive = type === activeType;
-
-//         upArrows.forEach(el => el.classList.toggle("hidden", isActive));
-//         downArrows.forEach(el => el.classList.toggle("hidden", !isActive));
-//     });
-// }
-
-// function resetContainers() {
-//     exercices_plan_container.innerHTML = "";
-//     exercices_program_container.innerHTML = "";
-//     exercices_title_container.innerHTML = "";
-//     exercices_program_title_container.innerHTML = "";
-//     free_video_container.innerHTML = "";
-// }
-
-// function showProgram(program) {
-//     const isPump = program === "pump";
-//     const isVisible = isPump ? show_pump : show_leg;
-
-//     if (isVisible) {
-//         toggleArrows(null); // Réinitialise les flèches
-//         resetContainers();
-//         show_pump = false;
-//         show_leg = false;
-//         show_cardio = false;
-//         show_abs = false;
-//         show_stretch = false;
-//         return;
-//     }
-
-//     toggleArrows(program);
-//     resetContainers();
-//     exercices_program_title_container.innerHTML = "Programmes";
-
-//     const list = isPump ? pumps : legs;
-//     const unit = isPump ? "pompes" : "squats";
-
-//     list.forEach(item => {
-//         exercices_program_container.innerHTML += `<li onclick="changeProgram('${item}', '${program}')">${item} ${unit}</li>`;
-//     });
-
-//     const defaultProgram = isPump ? "11-20" : "41-60";
-//     changeProgram(defaultProgram, program);
-
-//     show_pump = isPump;
-//     show_leg = !isPump;
-// }
-
 function changeProgram(name_program, type_program) {
     if (["abs", "cardio", "stretch"].includes(type_program)) {
         showVideoProgram(type_program);
