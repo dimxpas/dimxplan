@@ -296,13 +296,18 @@ const exercices_plan_container = document.getElementById("exercices_plan");
 const exercices_title_container = document.getElementById("title_exercices_program");
 const exercices_program_title_container = document.getElementById("title_list");
 const exercices_program_container = document.getElementById("list_exercices_program");
+const free_video_container = document.getElementById("free_video");
 
 
 let show_pump = false;
 let show_leg = false;
+let show_cardio = false;
+let show_abs = false;
+let show_stretch = false;
+
 
 function toggleArrows(activeType) {
-    const types = ["pump", "leg"];
+    const types = ["pump", "leg", "abs", "cardio", "stretch"];
 
     types.forEach(type => {
         const upArrows = document.querySelectorAll(`.arrow-up-${type}`);
@@ -319,39 +324,122 @@ function resetContainers() {
     exercices_program_container.innerHTML = "";
     exercices_title_container.innerHTML = "";
     exercices_program_title_container.innerHTML = "";
+    free_video_container.innerHTML = "";
 }
 
 function showProgram(program) {
     const isPump = program === "pump";
-    const isVisible = isPump ? show_pump : show_leg;
+    const isLeg = program === "leg";
+    const isFreeType = ["abs", "cardio", "stretch"].includes(program);
+
+    const isVisible =
+        (isPump && show_pump) ||
+        (isLeg && show_leg) ||
+        (program === "abs" && show_abs) ||
+        (program === "cardio" && show_cardio) ||
+        (program === "stretch" && show_stretch);
 
     if (isVisible) {
         toggleArrows(null); // Réinitialise les flèches
         resetContainers();
         show_pump = false;
         show_leg = false;
+        show_cardio = false;
+        show_abs = false;
+        show_stretch = false;
         return;
     }
 
     toggleArrows(program);
     resetContainers();
-    exercices_program_title_container.innerHTML = "Programmes";
 
-    const list = isPump ? pumps : legs;
-    const unit = isPump ? "pompes" : "squats";
+    if (!isFreeType) {
+        exercices_program_title_container.innerHTML = "Programmes";
 
-    list.forEach(item => {
-        exercices_program_container.innerHTML += `<li onclick="changeProgram('${item}', '${program}')">${item} ${unit}</li>`;
-    });
+        const list = isPump ? pumps : legs;
+        const unit = isPump ? "pompes" : "squats";
 
-    const defaultProgram = isPump ? "11-20" : "41-60";
-    changeProgram(defaultProgram, program);
+        list.forEach(item => {
+            exercices_program_container.innerHTML += `
+                <li onclick="changeProgram('${item}', '${program}')">
+                    ${item} ${unit}
+                </li>`;
+        });
 
+        const defaultProgram = isPump ? "11-20" : "41-60";
+        changeProgram(defaultProgram, program);
+    } else {
+        changeProgram(null, program); // Appelle quand même changeProgram pour les types libres
+    }
+
+    // Met à jour les indicateurs de programme actif
     show_pump = isPump;
-    show_leg = !isPump;
+    show_leg = isLeg;
+    show_abs = program === "abs";
+    show_cardio = program === "cardio";
+    show_stretch = program === "stretch";
 }
 
+// function toggleArrows(activeType) {
+//     const types = ["pump", "leg", "abs", "cardio", "stretch"];
+
+//     types.forEach(type => {
+//         const upArrows = document.querySelectorAll(`.arrow-up-${type}`);
+//         const downArrows = document.querySelectorAll(`.arrow-down-${type}`);
+//         const isActive = type === activeType;
+
+//         upArrows.forEach(el => el.classList.toggle("hidden", isActive));
+//         downArrows.forEach(el => el.classList.toggle("hidden", !isActive));
+//     });
+// }
+
+// function resetContainers() {
+//     exercices_plan_container.innerHTML = "";
+//     exercices_program_container.innerHTML = "";
+//     exercices_title_container.innerHTML = "";
+//     exercices_program_title_container.innerHTML = "";
+//     free_video_container.innerHTML = "";
+// }
+
+// function showProgram(program) {
+//     const isPump = program === "pump";
+//     const isVisible = isPump ? show_pump : show_leg;
+
+//     if (isVisible) {
+//         toggleArrows(null); // Réinitialise les flèches
+//         resetContainers();
+//         show_pump = false;
+//         show_leg = false;
+//         show_cardio = false;
+//         show_abs = false;
+//         show_stretch = false;
+//         return;
+//     }
+
+//     toggleArrows(program);
+//     resetContainers();
+//     exercices_program_title_container.innerHTML = "Programmes";
+
+//     const list = isPump ? pumps : legs;
+//     const unit = isPump ? "pompes" : "squats";
+
+//     list.forEach(item => {
+//         exercices_program_container.innerHTML += `<li onclick="changeProgram('${item}', '${program}')">${item} ${unit}</li>`;
+//     });
+
+//     const defaultProgram = isPump ? "11-20" : "41-60";
+//     changeProgram(defaultProgram, program);
+
+//     show_pump = isPump;
+//     show_leg = !isPump;
+// }
+
 function changeProgram(name_program, type_program) {
+    if (["abs", "cardio", "stretch"].includes(type_program)) {
+        showVideoProgram(type_program);
+        return;
+    }
+
     if (type_program == "pump") {
         program_name = "pompes";
         programs_plan = pumps_plan[name_program];
@@ -360,11 +448,12 @@ function changeProgram(name_program, type_program) {
         } else {
             complete_first_col = false;
         }
-    } else {
+    } else if (type_program == "leg") {
         program_name = "squats";
         programs_plan = legs_plan[name_program];
         complete_first_col = false;
     }
+
     document.getElementById("title_exercices_program").innerHTML = "Série de " + name_program + " " + program_name;
     exercices_plan_html = "";
     programs_plan.forEach(program_plan => {
@@ -399,4 +488,51 @@ function changeProgram(name_program, type_program) {
         exercices_plan_html += exercices_plan_container_html;
     });
     exercices_plan_container.innerHTML = "<div class='row'>" + exercices_plan_html + "</div>";
+    showVideoProgram(type_program);
+}
+
+function showVideoProgram(video_program) {
+    free_video_content = "";
+    const free_videos = ["warm_up_routine"];
+    const name_free_videos = ["Échauffement"];
+    if (video_program == "pump") {
+        free_videos.push("100_push_ups_a_day_challenge");
+        name_free_videos.push("100 pompes challenge");
+    } else if (video_program == "leg") {
+        free_videos.push("7_min_legs");
+        name_free_videos.push("7min jambes");
+    } else if (video_program == "leg") { 
+        free_videos.push("7_min_legs");
+        name_free_videos.push("7min jambes");
+    } else if (video_program == "cardio") {
+        free_videos.push("10_min_full_body_cardio");
+        name_free_videos.push("10min Full Body Cardio");
+    } else if (video_program == "abs") {
+        free_videos.push("5_min_abs_no_rest", "abs_challenge");
+        name_free_videos.push("5min abdos", "Abdos challenge");
+    } else {
+        free_videos.push("8_min_to_fix_posture");
+        name_free_videos.push("8min stretching");
+    }
+    nb_video = 0;
+    nb_videos = free_videos.length;
+    if (nb_videos == 1) {
+        col_size = 12;
+    } else if (nb_videos == 2) {
+        col_size = 6;
+    } else {
+        col_size = 4;
+    }
+    free_videos.forEach(free_video => {
+        free_video_content += `<div class="col-sm-12 col-lg-${col_size}"><h3>${name_free_videos[nb_video]}</h3>
+            <video controls="controls" preload="true">
+                <source src="src/video/${free_video}.mp4" type="video/mov"/>
+                <source src="src/video/${free_video}.mp4" type="video/mp4" />
+                <source src="src/video/${free_video}.mp4" type="video/oog" />
+                Your browser does not support the video tag.
+            </video>
+        </div>`;
+        nb_video++;
+    });
+    free_video_container.innerHTML = "<h2>Liste des vidéos</h2><div class='row'>" + free_video_content + "</div>";
 }

@@ -280,7 +280,8 @@ h3 {
 }
 
 /* Séries du programme */
-#show_pump_program, #show_leg_program {
+#show_pump_program, #show_leg_program, #show_abs_program, #show_cardio_program, #show_stretch_program {
+	width: 160px;
     padding: 8px;
     margin: 0px 23px;
     background-color: #e8f5e9;
@@ -291,7 +292,7 @@ h3 {
 	font-weight: bold;
 }
 
-#show_pump_program:hover, #show_leg_program:hover {
+#show_pump_program:hover, #show_leg_program:hover, #show_abs_program:hover, #show_cardio_program:hover, #show_stretch_program:hover {
     background-color: #e8f5e9;
 	box-shadow: 3px 3px #b3b3b3;
 }
