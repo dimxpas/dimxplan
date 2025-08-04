@@ -82,7 +82,8 @@ if (container !== null) {
     day_container.innerHTML += `<h2>${jours[today]}</h2>`;
     planning[jours[today]].forEach(today_activity => {
         if (today_activity.type != "work") {
-            day_container.innerHTML += `<div class="daily_activity ${today_activity.type}">${today_activity.start}h - ${today_activity.end}h ${today_activity.activity} <a href="/free-programme" title="programme libre">✪</a></div>`;
+            console.log()
+            day_container.innerHTML += `<div class="daily_activity ${today_activity.type}">${today_activity.start}h - ${today_activity.end}h ${today_activity.activity} ${today_activity.type === "sport" ? `<a href="/dimxplan/free-programme" title="programme libre">✪</a>` : ``}</div>`;
             if (today_activity.type == "sport") {
                 day_container.innerHTML += `<div class='row center-align' id='item_video'></div>`;
                 video_container = document.getElementById("item_video");
